@@ -1,0 +1,9 @@
+<div align="center">
+	<%= form_tag action: :pembuat_socket, method: :post, remote: true do %>
+		<%= tag.input type: :text, name: :host %>
+		<%= tag.br %>
+		<%= tag.input type: :number, name: :port, value: '3000' %>
+		<%= tag.br %>
+		<%= tag.input type: :submit, value: :Uy %>
+	<% end %>
+</div>

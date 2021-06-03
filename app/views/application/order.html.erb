@@ -1,0 +1,23 @@
+<div id="order">
+	<h1>Mengorder <%= @barang.nama %></h1>
+	<h3><%= @barang.harga %> per barang</h3>
+	<p>Stok <%= @barang.jumlah %></p>
+	<%= form_for :pembeli, url: { action: :kirim_orderan, barang_id: @barang.id }, method: :post do |pbl| %>
+		<h2>Data Orderan</h1>
+		<%= pbl.label(:jumlah_order) %>
+		<%= pbl.number_field(:jumlah_order, value: 1, in: 1..@barang.jumlah) %>
+		<br/><br/>
+		<%= pbl.label(:nama_pengorder) %>
+		<%= pbl.text_field(:nama_pengorder, value: "") %>
+		<br/><br/>
+		<%= pbl.label(:wilayah) %>
+		<%= pbl.select(:wilayah, options_for_select(["Jawa", "Sumatra", "Kalimantan", "Sulawesi"]), select: "Jawa") %>
+		<br/><br/>
+		<%= pbl.label(:alamat) %>
+		<%= pbl.text_area(:alamat, value: "", rows: 4) %>
+		<br/><br/>
+		<%= pbl.button("kirim") %>
+	<% end %>
+</div>
+
+<%= link_to "Batal", action: :index %>

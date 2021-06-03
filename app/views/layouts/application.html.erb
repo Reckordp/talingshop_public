@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TalingShop</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0">
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if action_name != "order" %>
+      <div class="kepala">
+        <div class="atas">
+          <div class="tombol"><%= image_tag "menu.png" %></div>
+          <div class="tulisan">Taling<span class="gaya">Shop</span></div>
+          <div class="tombol"><%= image_tag "belanja.png" %></div>
+        </div>
+        <div class="bawah">
+          <%= form_for "pencarian", url: { action: :cari }, method: :get, html: { :id => "pencarian" } do |pcr| %>
+          <%=   pcr.search_field(:barang, { :id => "cari", :placeholder => "Cari Barang" }) %>
+          <%=   pcr.button do %>
+          <%=     image_tag "cari.png" %>
+          <%    end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>

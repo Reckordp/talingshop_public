@@ -1,0 +1,17 @@
+<% if @admin %>
+	<h1> Admin </h1>
+<% end %>
+
+<div class="jenis">
+	<% ["ganjil", "genap"].each do |kondisi| %>
+		<div class=<%= kondisi %>>
+			<% @barang.shift(2).each do |barang| %>
+				<span>
+					<h1><%= barang.nama %></h1>
+					<p><%= barang.jumlah %> barang</p>
+					<button><%= link_to "order", { action: :order, barang_id: barang.id } %></button>
+				</span>
+			<% end %>
+		</div>
+	<% end %>
+</div>
